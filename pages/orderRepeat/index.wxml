@@ -1,0 +1,52 @@
+<view class="list">
+  <view class="item" wx:for="{{list}}" wx:key="firstindex">
+    <image src="/image/avatar.png" class="avatar" wx:if="{{!item.photo}}"></image>
+    <image src="{{item.photo}}" class="avatar" wx:else></image>
+    <view class="msg">
+      <view class="flex bwn name">
+        <view>{{item.nickName||''}}</view>
+        <view class="flex repeat center" catchtap="replay" data-firstid="{{item.id}}">
+          回复 <image src="/image/right_g.png"></image>
+        </view>
+      </view>
+      <view class="getMsg" wx:if="{{item.commentType==1}}">{{item.comment}}</view>
+      <view class="audio" wx:if="{{item.commentType==2}}">
+        <view class="flex showAll" bindtap="audioPlay" data-url="{{item.comment}}" data-findex="{{item.id}}"
+          data-floor="{{1}}">
+          <image src="/image/radio.png" wx:if="{{!item.play}}"></image>
+          <image src="/image/palyAudio.gif" wx:else></image>
+        </view>
+      </view>
+      <view class="replyMsg" wx:if="{{item.childrenList.length>0}}">
+        <view wx:for="{{item.childrenList}}" wx:for-item="val" wx:key="index">
+          <image src="{{val.photo}}" class="avatarR"></image>
+          <view class="contR flex">
+            <text>{{val.nickName||''}}{{userId==item.userId?'(发布人)':''}}</text>：
+            <view wx:if="{{val.commentType==1}}">{{val.comment}}</view>
+            <view wx:if="{{val.commentType==2}}" class="flex showAll" bindtap="audioPlay" data-url="{{val.comment}}"
+              data-findex="{{item.id}}" data-secindex="{{index}}" data-floor="{{2}}" style="margin:0;">
+              <image src="/image/radio.png" wx:if="{{!val.play}}"></image>
+              <image src="/image/palyAudio.gif" wx:else></image>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottomFix" style="padding-bottom:{{safeBottom}}">
+  <view class="flex">
+    <view class="toggle" catchtap="toggleV">
+      <image src="/image/keyboard.png" hidden="{{showInput}}"></image>
+      <image src="/image/vioce.png" hidden="{{!showInput}}"></image>
+    </view>
+    <view class="msgElse">
+      <textarea bindblur="bindTextAreaBlur" auto-height hidden="{{!showInput}}" focus="{{focus}}"
+        model:value="{{content}}" cursor-spacing="{{20}}"></textarea>
+      <button hidden="{{showInput}}" hover-stop-propagation bindtouchstart='startHandel' bindtouchend='endHandle'
+        disabled="{{!idAudio}}" hover-class="hoverClass">按住 说话</button>
+    </view>
+    <view class="send" hidden="{{!showInput}}" catchtap="sendMsg">发送</view>
+  </view>
+</view>
+<callRoom id="roomMsg"></callRoom>

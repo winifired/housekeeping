@@ -1,0 +1,15 @@
+<view class="bar">
+  <view class="bar_top">
+    <image src="/image/navbarBg.png" class="navbarBg" style="height:{{statusHeight}}rpx"></image>
+    <view class="asolute">
+      <view style="height:{{ktxStatusHeight}}rpx;"></view>
+      <view class="flex nav" style="height:{{navigationHeight}}rpx;">
+        <image class="widthZ" src="/image/back.png" catchtap="back" wx:if="{{hiddenBack=='true'}}"></image>
+        <view wx:if="{{hiddenBack=='false'}}" class="widthZ"></view>
+        <view class="titleNave">{{innerText}}</view>
+        <view class="widthZ"></view>
+      </view>
+    </view>
+  </view>
+  <view style="height:{{statusHeight-2}}rpx"></view>
+</view>

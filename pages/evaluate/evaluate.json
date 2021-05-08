@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "upload":"../../component/uploadImg/upLoad",
+    "van-rate": "@vant/weapp/rate/index"
+  },
+  "navigationBarTitleText": "评价"
+}

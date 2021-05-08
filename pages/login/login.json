@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "code":"../../component/buttonCode/code",
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "navigationBarTitleText": "登录"
+}

@@ -1,0 +1,32 @@
+<view class="eva">
+  <view class="list">
+    <navigator class="item" hover-class="none">
+      <view class="else">
+        <view class="name flex">标 <text>题</text> </view>
+        <view class="flex cont bwn">
+          <view class="">{{orderTitle}}</view>
+          <view class="status">{{orderStatusT}}</view>
+        </view>
+      </view>
+      <view class="else">
+        <view class="name">所属分类</view>
+        <view class="flex cont">{{classifyName}}</view>
+      </view>
+      <view class="else">
+        <view class="name">详细地址</view>
+        <view class="flex cont">{{address}}</view>
+      </view>
+    </navigator>
+  </view>
+  <view class="flex bwn star">
+    <view>评分</view>
+    <van-rate value="{{ star }}" color="#35BB9A" void-color="#CDD7D5" size="{{20}}" gutter="{{1}}" void-icon="star" bind:change="onChange" />
+  </view>
+  <view class="evaCont">
+    <view class="evaContT">评价</view>
+    <textarea placeholder="请输入您的评价信息" placeholder-class="inputPl" model:value="{{cont}}"></textarea>
+    <upload bindgetImg="getImg" isEdit="{{true}}"></upload>
+  </view>
+</view>
+<view class="save" bindtap="save">提交</view>
+<callRoom id="roomMsg"></callRoom>

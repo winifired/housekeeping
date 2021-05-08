@@ -1,0 +1,57 @@
+<view class="add">
+  <form catchsubmit="formSubmit">
+    <view class="item flex">
+      <view class="name">投诉工人</view>
+      <view class="input flex bwn" bindtap="open">
+        <input type="text" placeholder="请选择投诉工人" placeholder-class="inputPl" disabled value="{{name}}" />
+        <image src="/image/right_white.png" class="right_gray"></image>
+      </view>
+    </view>
+    <view class="item flex">
+      <view class="name">投诉理由</view>
+      <picker mode="selector" range="{{reason}}" value="{{reasonIndex}}" bindchange="changeReason">
+        <view class="input flex bwn">
+          <input type="text" placeholder="请选择投诉理由" placeholder-class="inputPl" disabled
+            value="{{reasonVal}}" />
+          <image src="/image/right_white.png" class="right_gray"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="item flex">
+      <view class="name">投诉目的</view>
+      <picker mode="selector" range="{{priceType}}" value="{{priceTypeValue}}" bindchange="changePriceType">
+        <view class="input flex bwn">
+          <input type="text" placeholder="请选择您的投诉目的" placeholder-class="inputPl" disabled
+            value="{{priceTypeVal}}" />
+          <image src="/image/right_white.png" class="right_gray"></image>
+        </view>
+      </picker>
+    </view>
+    <view class="item flex">
+      <view class="name">金额</view>
+      <view class="input flex bwn">
+        <input type="digit" placeholder="请输入金额" placeholder-class="inputPl" model:value="{{price}}" />
+      </view>
+    </view>
+    <view class="evaCont">
+      <view class="evaContT">投诉信息</view>
+      <textarea placeholder="请输入您的投诉信息" placeholder-class="inputPl" model:value="{{msg}}"></textarea>
+      <upload bindgetImg="getImg" isEdit="{{true}}"></upload>
+    </view>
+    <button type="primary" formType="submit" class="save confirm">提交</button>
+  </form>
+</view>
+<van-popup show="{{ showWorker }}" bind:close="onClose" position="bottom" catchtouchmove="true">
+  <scroll-view scroll-y="{{true}}" style="height:500rpx;">
+    <view class="workerCont">
+      <view class="flex workerTitle bwn">
+        <view catchtap="onClose">取消</view>
+        <view catchtap="save">确定</view>
+      </view>
+      <view class="worker">
+        <view class="item_hd {{item.checked?'activeWorker':''}}" wx:for="{{biddingList}}" wx:key="index" catchtap="chooseItem" data-index="{{index}}">{{item.userName||''}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</van-popup>
+<callRoom id="roomMsg"></callRoom>

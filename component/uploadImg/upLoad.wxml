@@ -1,0 +1,10 @@
+<view class="uploadImg">
+  <view wx:for="{{imagesUrl}}" wx:key="index" catchtap="prevImg" data-item="{{item}}">
+    <image src="{{item.content}}" class="img" wx:if="{{item.type=='图片'}}" mode="aspectFit"></image>
+    <video src="{{item.content}}" wx:else class="img" show-center-play-btn="{{false}}"></video>
+    <image src="/image/remove.png" class="close" catchtap="removeImg" data-index="{{index}}" wx:if="{{isEdit}}"></image>
+  </view>
+  <view class="upLoad" catchtap="addImg" wx:if="{{isEdit}}">
+    <image src="/image/addImg.png"></image>
+  </view>
+</view>

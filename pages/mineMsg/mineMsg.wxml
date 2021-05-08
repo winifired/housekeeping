@@ -1,0 +1,35 @@
+<view class="item flex bwn" bindtap="chooseImg">
+  <view>头像</view>
+  <view class="right_view flex" >
+    <image src="/image/avatar.png" class="avater" wx:if="{{!userPhoto}}"></image>
+    <image src="{{userPhoto}}" class="avater" wx:else></image>
+  </view>
+</view>
+<view class="item flex bwn" bindtap="showModel">
+  <view>昵称</view>
+  <view class="right_view flex">
+    <input type="text" value="{{userName}}" disabled />
+  </view>
+</view>
+<view class="item flex bwn">
+  <view>手机号</view>
+  <view class="right_view flex">
+    <input type="text" value="{{userInfo.phone}}" disabled />
+  </view>
+</view>
+<view class="bottomFix" style="padding-bottom:{{safeBottom}}">
+  <view class="save" catchtap="edit">保存</view>
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" round catchtouchmove="true">
+  <view class="model">
+    <view class="title">修改昵称</view>
+    <view class="input flex">
+      <input type="text" model:value="{{userName}}" placeholder="输入1~8个文字" placeholder-class="inputPl" />
+    </view>
+    <view class="flex btn">
+     <view style="color:#8F959E;border-right:1px solid #F5F5F5;" catchtap="onClose">取消</view>
+     <view catchtap="save">保存</view>
+    </view>
+  </view>
+</van-popup>
+<callRoom id="roomMsg"></callRoom>

@@ -1,0 +1,45 @@
+
+<view class="login">
+  <image src="/image/logo.png" class="logo"></image>
+  <view class="msg">
+    <view class="item flex">
+      <view>+86</view>
+      <input type="number" class="phone" model:value="{{phone}}" />
+    </view>
+    <view class="item flex">
+      <input type="number" model:value="{{codeVal}}" />
+      <code bindgetCode="getCode" phone="{{phone}}"></code>
+    </view>
+  </view>
+  <view class="save" bindtap="save">登录</view>
+  <view class="tip flex center">登录即表示同意
+    <view bindtap="showAgree">《用户协议》</view>
+  </view>
+  <button class="winxin" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"><image src="/image/winxin.png"></image></button>
+  
+</view>
+<van-popup show="{{ show }}" bind:close="onClose" custom-style="{{customStyle}}">
+  <view class="model">
+    <view class="title">用户协议</view>
+    <view class="content">
+      <rich-text nodes="{{info.ruleContent}}"></rich-text>
+    </view>
+    <view class="flex btn">
+      <view style="border-right:1px solid #EEEFF2;color:#697673" catchtap="onClose">不同意并退出</view>
+      <view catchtap="onClose">同意</view>
+    </view>
+  </view>
+</van-popup>
+<van-popup show="{{ getUser }}" bind:close="onClose" custom-style="{{customStyle}}">
+  <view class="model">
+    <view class="title">提示</view>
+    <view class="content" style="height:126rpx;">
+      还需要获取您的昵称和头像，便于完善您的信息
+    </view>
+    <view class="flex btn">
+      <view style="border-right:1px solid #EEEFF2;color:#697673" catchtap="refuseUser">不同意并登录</view>
+      <view catchtap="getUserProfile">同意</view>
+    </view>
+  </view>
+</van-popup>
+<callRoom id="roomMsg" wx:if="{{userId}}"></callRoom>

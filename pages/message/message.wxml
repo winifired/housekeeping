@@ -1,0 +1,15 @@
+<view class="message">
+  <view class="item" wx:for="{{list}}" wx:key="index" bindtap="toMsg" data-id="{{item.id}}" data-index="{{index}}">
+    <view class="flex bwn time">
+      <view class="flex titel">
+        <view class="cycle" wx:if="{{item.readFlag!=1}}"></view>
+        <view class="hidden">{{item.title||''}}</view>
+      </view>
+      <view>{{item.createTime}}</view>
+    </view>
+    <view class="content hidden2">
+      <rich-text nodes="{{item.content||''}}"></rich-text>
+    </view>
+  </view>
+</view>
+<callRoom id="roomMsg"></callRoom>

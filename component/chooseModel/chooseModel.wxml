@@ -1,0 +1,12 @@
+<van-popup show="{{ showModel }}" bind:close="onClose" round catchtouchmove="true">
+  <view class="model">
+    <view class="title">{{title}}</view>
+    <view class="input">
+      {{cont}}
+    </view>
+    <view class="flex btn">
+     <view style="color:#8F959E;border-right:1px solid #F5F5F5;" catchtap="onClose">取消</view>
+     <view catchtap="save">确定</view>
+    </view>
+  </view>
+</van-popup>

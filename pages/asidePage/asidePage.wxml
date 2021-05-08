@@ -1,0 +1,7 @@
+<view class="richText" style="padding-bottom:{{safeBottom+200}}rpx">
+ <rich-text nodes="{{info.detail||info.ruleContent}}"></rich-text>
+</view>
+<view class="bottomFix" wx:if="{{type==2||type==3}}" style="padding-bottom:{{safeBottom+30}}rpx">
+  <view class="save" catchtap="toAdd">发布需求</view>
+</view>
+<callRoom id="roomMsg"></callRoom>

@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "upload":"../../component/uploadImg/upLoad",
+    "code":"../../component/buttonCode/code",
+    "van-popup": "@vant/weapp/popup/index",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+  },
+  "navigationBarTitleText": "发布任务"
+}

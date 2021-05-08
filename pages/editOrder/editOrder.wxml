@@ -1,0 +1,103 @@
+<view class="add">
+  <form catchsubmit="formSubmit">
+    <view class="bg">
+      <view class="item">
+        <view class="name">标题</view>
+        <view class="input flex">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请输入你的标题" placeholder-class="inputPl" name="title" value="{{orderInfo.title}}" />
+        </view>
+      </view>
+      <view class="item" style="border:none;">
+        <textarea disabled value="{{orderInfo.demand}}"></textarea>
+      </view>
+      <view class="item">
+        <upload imagesUrl="{{orderInfo.demandUrl}}" isEdit="{{false}}"></upload>
+      </view>
+    </view>
+    <view class="bg" style="margin-top:26rpx;">
+      <view class="item flex">
+        <view class="name">所属分类</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="text" value="{{orderInfo.classifyName}}" disabled />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">地址</view>
+        <view class="input flex bwn" bindtap="chooseAddr">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请选择您的位置" placeholder-class="inputPl" disabled value="{{orderInfo.address}}" name="address" />
+          <image src="/image/right_white.png" class="right_gray"></image>
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">详细地址</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请输入您的详细地址" placeholder-class="inputPl" name="detailAddress" value="{{orderInfo.detailAddress}}" />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">订单形式</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="text" value="{{orderInfo.type==1?'定价发布':'竞价发布'}}" placeholder="" placeholder-class="inputPl" disabled />
+        </view>
+      </view>
+      <view class="item flex" wx:if="{{orderInfo.type==1}}">
+        <view class="name">价格</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请输入您的价格" placeholder-class="inputPl" name="price" value="{{orderInfo.price}}" />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">人数要求</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="number" name="userNum" placeholder="请输入人数要求" placeholder-class="inputPl" value="{{orderInfo.userNum}}" />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">预约时间</view>
+        <view class="input flex bwn" bindtap="chooseTime">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请选择您的预约时间" placeholder-class="inputPl" disabled
+            value="{{orderInfo.appointTime}}" name="appointTime" />
+          <image src="/image/right_white.png" class="right_gray"></image>
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">联系人</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="text" placeholder="请输入联系人" placeholder-class="inputPl" name="contacts" value="{{orderInfo.contacts}}" />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">联系方式</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="number" model:value="{{phone}}" placeholder="请输入联系方式" placeholder-class="inputPl" name="contactsPhone" />
+        </view>
+      </view>
+      <view class="item flex">
+        <view class="name">验证码</view>
+        <view class="input flex bwn">
+          <input cursor-spacing="{{20}}" type="number" placeholder="请输入验证码" placeholder-class="inputPl"  model:value="{{codeVal}}" />
+          <code bindgetCode="getCode" phone="{{phone}}"></code>
+        </view>
+      </view>
+    </view>
+    <view class="bottomFix flex around" style="padding-bottom:{{safeBottom}}">
+      <view catchtap="removeOrder">取消订单</view>
+      <button type="primary" formType="submit" class="save confirm">提交</button>
+    </view>
+  </form>
+</view>
+<chooseModel title="提示" cont="{{contModel}}" showModel="{{showModel}}" bindcloseModel="closeModel" bindsave="save">
+</chooseModel>
+<van-popup show="{{ showDate }}" bind:close="onClose" position="bottom" catchtouchmove="true">
+  <van-datetime-picker
+  visible-item-count="{{5}}"
+  item-height="{{33}}"
+  type="datetime"
+  min-date="{{ minDate }}"
+  max-date="{{maxDate}}"
+  bind:confirm="onInput"
+  bind:cancel="oncancel"
+  filter="{{ filter }}"
+/>
+</van-popup>
+<callRoom id="roomMsg"></callRoom>

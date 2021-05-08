@@ -1,0 +1,27 @@
+.richText {
+  font-size: 32rpx;
+  color: #415D56;
+  line-height: 59rpx;
+  padding: 33rpx;
+}
+
+.img_rich {
+  width: 100%!important;
+  height: auto;
+  display: block;
+  margin: 20rpx 0;
+}
+
+.richText col {
+  width: 100%!important;
+}
+.table_rich{
+  width:100%!important;
+}
+.save{
+  width: 580rpx;
+  margin:0 auto;
+}
+page{
+  background: #fff;
+}

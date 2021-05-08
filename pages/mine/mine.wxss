@@ -1,0 +1,127 @@
+.mine_name {
+  background: #fff;
+  padding: 0 42rpx 45rpx 45rpx;
+}
+.mine_name .avater > image {
+  width: 126rpx;
+  height: 126rpx;
+  border-radius: 50%;
+  margin-right: 21rpx;
+}
+.mine_name .avater .name {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #011F18;
+}
+.mine_name .avater .tip {
+  font-size: 24rpx;
+  margin: 15rpx 0 0;
+  color: #415D56;
+}
+.mine_name .right {
+  width: 12rpx;
+  height: 24rpx;
+}
+.imgWeChat {
+  width: 600rpx;
+  height: 600rpx;
+  border-radius: 20rpx;
+}
+.mine_ident {
+  position: relative;
+  background: #fff;
+  padding: 0 34rpx 0 36rpx;
+}
+.mine_ident > image {
+  width: 679rpx;
+  height: 130rpx;
+}
+.mine_ident .ident {
+  position: absolute;
+  z-index: 5;
+  top: 0;
+  padding: 27rpx 21rpx 24rpx 38rpx;
+  width: 679rpx;
+  height: 100%;
+}
+.mine_ident .ident .user > image {
+  width: 143rpx;
+  height: 35rpx;
+  margin: 0 0 15rpx;
+}
+.mine_ident .ident .user > view {
+  font-size: 24rpx;
+  color: #FFFFFF;
+}
+.mine_ident .ident .toggle {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1BC493;
+  line-height: 60rpx;
+  width: 160rpx;
+  height: 60rpx;
+  background: #F5F5F5;
+  border-radius: 30rpx;
+  text-align: center;
+}
+.mine_order {
+  width: 690rpx;
+  background: #FFFFFF;
+  border-radius: 20rpx;
+  margin: 23rpx auto 0;
+  padding: 36rpx 0 44rpx;
+}
+.mine_order .title {
+  padding: 0 19rpx 0 29rpx;
+  margin: 0 0 59rpx;
+}
+.mine_order .title > view:nth-child(1) {
+  font-size: 32rpx;
+  color: #011F18;
+}
+.mine_order .title .right_black {
+  font-size: 24rpx;
+  color: #011F18;
+}
+.mine_order .title .right_black > image {
+  width: 8rpx;
+  height: 16rpx;
+  margin-left: 16rpx;
+}
+.mine_order .order_item image {
+  width: 50rpx;
+  height: 50rpx;
+  margin: 0 auto 24rpx;
+}
+.mine_order .order_item view {
+  font-size: 24rpx;
+  text-align: center;
+  color: #011F18;
+  line-height: 30rpx;
+}
+button {
+  background: none;
+  margin: 0;
+  padding: 0;
+}
+button::after {
+  border: none;
+}
+.mine {
+  padding: 0 0 30rpx;
+}
+.model > view {
+  width: 689rpx;
+  height: 100rpx;
+  background: #FFFFFF;
+  border-radius: 30rpx;
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 34rpx;
+  font-weight: 400;
+  color: #011F18;
+  margin: 0 auto 4rpx;
+}
+.model .phone {
+  color: #35BB9A !important;
+}

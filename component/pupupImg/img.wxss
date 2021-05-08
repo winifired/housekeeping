@@ -1,0 +1,29 @@
+.imgVideo{
+  width:750rpx;
+  height: 100%;
+  background: none;
+}
+.imgVideo swiper-item{
+  background: none;
+}
+.imgVideo image,.imgVideo video{
+  width:750rpx;
+  height: 100%;
+  position: relative;
+  top:50%;
+  left: 50%;
+  transform:translate(-50%,-50%);
+}
+.closeImgShow{
+  position: relative;
+  width:750rpx;
+  height: 100%;
+}
+.closeImgShow>cover-image{
+  width:60rpx;
+  height: 60rpx;
+  position: absolute;
+  top:50rpx;
+  left:40rpx;
+  z-index:10;
+}

@@ -1,0 +1,57 @@
+.bg {
+  background: #fff;
+  padding: 0 30rpx 15rpx;
+}
+.name {
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #011F18;
+  width: 164rpx;
+}
+.input {
+  height: 117rpx;
+  flex: 1;
+}
+.item {
+  border-bottom: 1px solid #F2F2F2;
+}
+input,
+textarea {
+  font-size: 30rpx;
+}
+textarea {
+  padding: 36rpx 0;
+  height: 200rpx;
+  box-sizing: border-box;
+}
+.bg > view:last-child {
+  border: none !important;
+}
+picker {
+  flex: 1;
+}
+.right_gray {
+  width: 14rpx;
+  height: 27rpx;
+}
+.confirm {
+  width: 616rpx;
+  margin: 68rpx auto 0;
+}
+.add {
+  padding: 0 0 30rpx;
+}
+.van-picker__confirm {
+  color: #07c160 !important;
+}
+.van-picker__cancel {
+  color: #7f7f5d !important;
+}
+.van-picker__confirm,
+.van-picker__cancel {
+  font-size: 34rpx!important;
+}
+input,
+textarea {
+  flex: 1;
+}

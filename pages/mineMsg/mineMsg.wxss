@@ -1,0 +1,78 @@
+.item {
+  padding: 0 30rpx;
+  height: 117rpx;
+  border-bottom: 1px solid #F2F2F2;
+  background: #fff;
+}
+
+.item:last-child {
+  border: none;
+}
+
+.item>view:nth-child(1) {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.right_view {
+  font-size: 30rpx;
+  color: #333333;
+}
+
+.right_view>.avater {
+  width: 82rpx;
+  height: 82rpx;
+  border-radius: 50%;
+}
+
+.right_view>input {
+  font-size: 30rpx;
+  color: #333333;
+  text-align: right;
+}
+
+.save {
+  width: 616rpx;
+  margin: 0 auto;
+}
+
+.model {
+  width: 691rpx;
+  height: 430rpx;
+  background: #FFFFFF;
+  padding: 49rpx 0 0;
+}
+
+.model>.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+.model>.input {
+  width: 608rpx;
+  height: 92rpx;
+  background: #F5F5F5;
+  border-radius: 30rpx;
+  margin: 75rpx auto 56rpx;
+
+}
+
+.model>.input>input {
+  font-size: 32rpx;
+  padding: 0 34rpx;
+  font-weight: 500;
+  color: #8F959E;
+}
+
+.btn>view {
+  border-top:1px solid #F5F5F5;
+  width: 50%;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #35BB9A;
+  height: 114rpx;
+  line-height: 114rpx;
+  text-align: center;
+}

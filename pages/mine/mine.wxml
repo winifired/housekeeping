@@ -1,0 +1,89 @@
+<view class="mine">
+  <navigator hover-class="none" url="/pages/mineMsg/mineMsg" class="mine_name flex bwn">
+    <view class="flex avater">
+      <image src="/image/avatar.png" wx:if="{{!userInfo.photo}}"></image>
+      <image src="{{userInfo.photo}}" wx:else></image>
+      <view>
+        <view class="name">{{userInfo.nickName||''}}</view>
+        <view class="tip" wx:if="{{userId}}">查看或编辑个人资料</view>
+      </view>
+    </view>
+    <image src="/image/right_white.png" class="right"></image>
+  </navigator>
+  <view class="mine_ident">
+    <image src="/image/mine_bg.png"></image>
+    <view class="ident flex bwn">
+      <view class="user">
+        <image src="/image/mine_01.png"></image>
+        <view>不同身份  专属服务不同</view>
+      </view>
+      <view class="toggle" bindtap="toggleID">切换工人</view>
+    </view>
+  </view>
+  <view class="mine_order">
+    <view class="flex title bwn">
+      <view>我的订单</view>
+      <navigator class="flex right_black" hover-class="none" url="/pages/order/order?activeNav=9">
+        全部订单
+        <image src="/image/right_black.png"></image>
+      </navigator>
+    </view>
+    <view class="flex order_item around">
+      <navigator hover-class="none" url="{{item.url}}" wx:for="{{order}}" wx:key="index">
+        <image src="{{item.img}}"></image>
+        <view>{{item.name}}</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="mine_order">
+    <view class="flex title bwn">
+      <view>消息中心</view>
+    </view>
+    <view class="flex order_item around">
+      <navigator hover-class="none" url="{{item.url}}" wx:for="{{msg}}" wx:key="index">
+        <image src="{{item.img}}"></image>
+        <view>{{item.name}}</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="mine_order">
+    <view class="flex title bwn">
+      <view>帮助中心</view>
+    </view>
+    <view class="flex order_item around">
+      <navigator hover-class="none" url="{{item.url}}" wx:for="{{help}}" wx:key="index">
+        <image src="{{item.img}}"></image>
+        <view>{{item.name}}</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="mine_order">
+    <view class="flex title bwn">
+      <view>其他工具</view>
+    </view>
+    <view class="flex order_item around">
+      <view bindtap="openChat">
+        <image src="/image/mine_08.png"></image>
+        <view>在线客服</view>
+      </view>
+      <view bindtap="showModel">
+        <image src="/image/mine_09.png"></image>
+        <view>客服电话</view>
+      </view>
+      <view bindtap="outLogin">
+        <image src="/image/mine_10.png"></image>
+        <view>退出登录</view>
+      </view>
+    </view>
+  </view>
+</view>
+<van-popup show="{{ showPhone }}" bind:close="onClose" custom-style="background:none;padding:0;" catchtouchmove="true" position="bottom">
+  <view class="model">
+    <view class="phone" catchtap="makePhone">{{service.servicePhone||''}}</view>
+    <view catchtap="onClose">取消</view>
+  </view>
+</van-popup>
+<van-popup show="{{ showChat }}" bind:close="onClose2" close-on-click-overlay catchtouchmove="true" round>
+  <image src="{{service.serviceWechat}}" class="imgWeChat" catchlongpress="longpress"></image>
+</van-popup>
+<callRoom id="roomMsg" wx:if="{{userId}}"></callRoom>

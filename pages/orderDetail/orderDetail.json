@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "nav":"../../component/navBar/navBar",
+    "chooseModel": "../../component/chooseModel/chooseModel",
+    "van-rate": "@vant/weapp/rate/index",
+    "imgs":"../../component/pupupImg/img",
+    "van-popup": "@vant/weapp/popup/index"
+  },
+  "navigationStyle":"custom"
+}

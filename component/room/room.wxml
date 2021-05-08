@@ -1,0 +1,28 @@
+<TRTCCalling id="TRTCCalling-component" class="trtc-calling {{callingFlag ? '' : 'hidden'}}" config="{{config}}"
+  pusherAvatar="{{pusherAvatar}}" remoteAvatar="{{invitee.avatar || inviter.avatar}}"></TRTCCalling>
+<view class="container" wx:if="{{incomingCallFlag||inviteCallFlag}}">
+  <view wx:if="{{incomingCallFlag}}" class="incoming-call">
+    <!-- 显示邀请者信息 -->
+    <image src="{{getInvitation.photo||''}}" class="avatarIMG" />
+    <view class="tips">{{getInvitation.nickName||getInvitation.phone}}</view>
+    <view class="tips">{{'邀请你' + (invitation.inviteData.callType === 1 ? '语音' : '视频') + '通话'}}</view>
+    <view class="btn-operate">
+      <view class="call-operate" style="background-color: red" bindtap="handleOnReject">
+        <image src="/image/hangup.png" />
+      </view>
+      <view class="call-operate" style="background-color: #07c160" bindtap="handleOnAccept">
+        <image src="/image/hangup.png" style="transform: rotate(-135deg); " />
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{inviteCallFlag}}" class="invite-call">
+    <!--显示受邀者信息 -->
+    <image src="{{invitee.avatar}}" class="avatarIMG" />
+    <view class="tips">{{'等待' + invitee.name + '接受邀请'}}</view>
+    <view class="btn-operate">
+      <view class="call-operate" style="background-color: red" bindtap="handleOnCancel">
+        <image src="/image/hangup.png" />
+      </view>
+    </view>
+  </view>
+</view>

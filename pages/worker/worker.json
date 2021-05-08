@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "nav": "../../component/navBar/navBar",
+    "chooseModel": "../../component/chooseModel/chooseModel"
+  },
+  "navigationStyle": "custom"
+}

@@ -1,0 +1,16 @@
+<van-popup show="{{ show }}" custom-style="height: 90%;background:none;" overlay-style="background:rgba(0,0,0,1);"
+  close-on-click-overlay bind:close="onClose"
+  safe-area-inset-top safe-area-inset-bottom>
+  <view class="closeImgShow">
+    <cover-image src="/image/remove.png" catchtap="onClose"></cover-image>
+    <swiper class="imgVideo" current="{{currentSwiper}}" indicator-dots="{{true}}" indicator-color="#DDEAE6"
+      indicator-active-color="#35BB9A">
+      <block wx:for="{{showList}}" wx:key="*this">
+        <swiper-item>
+          <image src="{{item.content}}" wx:if="{{item.type=='图片'}}" mode="widthFix"></image>
+          <video src="{{item.content}}" wx:else object-fit="contain"></video>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</van-popup>

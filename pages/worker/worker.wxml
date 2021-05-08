@@ -1,0 +1,99 @@
+<view class="worker">
+  <nav innerText="工人信息" hiddenBack="{{true}}" bindstatusHeight="statusHeight"></nav>
+  <view class="workerMsg">
+    <view class="avatar">
+      <image src="/image/avatar.png" wx:if="{{!workerInfo.jzUser.photo}}"></image>
+      <image src="{{workerInfo.jzUser.photo}}" wx:else></image>
+    </view>
+    <view class="flex name">
+      {{workerInfo.jzUser.nickName||''}}
+      <image src="/image/show_01.png" style="margin-left:11rpx;" wx:if="{{workerInfo.jzUser.phone}}"></image>
+      <image src="/image/show_02.png" wx:if="{{workerInfo.jzUser.face}}"></image>
+      <image src="/image/show_03.png" wx:if="{{workerInfo.jzUser.cardFront}}"></image>
+      <image src="/image/show_04.png" wx:if="{{workerInfo.jzUser.bond}}"></image>
+    </view>
+    <view class="experience flex">
+      <view>{{workerInfo.jzUser.experienceYear||0}}年经验</view>
+      <view>{{workerInfo.serviceType==1?'视频指导':(workerInfo.serviceType==2?'到店服务':'上门服务')}}</view>
+    </view>
+    <view class="skill flex" wx:if="{{workerInfo.jzUser.major.length>0}}">
+      <view wx:for="{{workerInfo.jzUser.major}}" wx:key="index">{{item}}</view>
+    </view>
+    <view class="offer flex" wx:if="{{type==2}}">
+      <view class="price"> <text>￥</text>{{workerInfo.totalMoney||0}}</view>
+      <view class="inclued">含 : 服务费{{workerInfo.serviceMoney||0}}
+        <text wx:if="{{workerInfo.serviceTyp==3}}">+上门费{{workerInfo.travelMoney||0}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="elseMsg">
+  <view class="address" wx:if="{{workerInfo.serviceType==2&&workerInfo.workerPosition}}">
+    <view class="title">工人位置</view>
+    <view class="flex bwn">
+      <view class="msg">
+        <image src="/image/loc.png"></image>
+        <view>{{workerInfo.workerPosition||''}}
+        </view>
+      </view>
+      <view class="getL" bindtap="getWorkAddr">导航</view>
+    </view>
+  </view>
+  <view class="address bottomS">
+    <view class="title">保障</view>
+    <view class="msg" wx:if="{{workerInfo.ensure}}">
+      <image src="/image/shou.png"></image>
+      <view>售后保障
+        <text>{{workerInfo.ensure||''}}</text>
+      </view>
+    </view>
+    <view class="msg" wx:if="{{workerInfo.explaina}}">
+      <image src="/image/shou.png"></image>
+      <view>退换说明
+        <text>{{workerInfo.explaina||''}}</text>
+      </view>
+    </view>
+    <view class="msg" wx:if="{{workerInfo.validity}}">
+      <image src="/image/shou.png"></image>
+      <view>质保时间
+        <text>{{workerInfo.validity||''}}</text>
+      </view>
+    </view>
+    <view class="msg">
+      <image src="/image/shou.png"></image>
+      <view>服务保障
+        <text>{{workerInfo.jzUser.serviceEnsure||''}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="address" wx:if="{{workerInfo.jzUser.otherIntroduce}}">
+    <view class="title">其他介绍</view>
+    <view class="msg">
+      <view>{{workerInfo.jzUser.otherIntroduce}}</view>
+    </view>
+  </view>
+  <view class="address" wx:if="{{workerInfo.completeRemark||workerInfo.remarkUrl.length>0}}">
+    <view class="title">工人评价</view>
+    <view class="msg">
+      <view>{{workerInfo.completeRemark||''}}</view>
+    </view>
+    <view class="evaImg flex">
+      <view wx:for="{{workerInfo.remarkUrl}}" wx:key="index" bindtap="showImgVideo" data-index="{{index}}"
+        data-list="{{workerInfo.remarkUrl}}">
+        <image src="{{item.content}}" wx:if="{{item.type=='图片'}}"></image>
+        <video src="{{item.content}}" wx:else show-center-play-btn="{{false}}"></video>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottomFix flex around" style="padding-bottom:{{safeBottom}}" wx:if="{{orderStatus==1||orderStatus==4}}">
+  <!-- 订单待接单 -->
+  <view catchtap="confirm" data-type="{{1}}" wx:if="{{orderStatus==1}}">淘汰</view>
+  <view class="confirm" catchtap="confirm" data-type="{{2}}" wx:if="{{orderStatus==1}}">选择</view>
+  <!-- 订单待完成 -->
+  <view wx:if="{{orderStatus==4}}" catchtap="audioCall">拨打电话</view>
+  <view class="confirm" wx:if="{{orderStatus==4}}" catchtap="enterRoom">视频电话</view>
+</view>
+<chooseModel title="提示" cont="{{contModel}}" showModel="{{showModel}}" bindcloseModel="closeModel" bindsave="save">
+</chooseModel>
+<callRoom inviter="{{inviter}}" invitee="{{invitee}}" config="{{config}}" id="roomMsg"></callRoom>

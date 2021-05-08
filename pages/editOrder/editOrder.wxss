@@ -1,0 +1,20 @@
+@import "../add/add.wxss";
+.bottomFix>view {
+  width: 324rpx;
+  height: 88rpx;
+  background: #76E4C9;
+  border-radius: 44rpx;
+  font-size: 32rpx;
+  color: #FFFFFF;
+  line-height: 88rpx;
+  text-align: center;
+}
+
+.bottomFix>.confirm {
+  width: 324rpx !important;
+  background: #0BB381 !important;
+  margin: 0 !important;
+}
+.add{
+  padding-bottom:240rpx;
+}

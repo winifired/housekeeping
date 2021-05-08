@@ -1,0 +1,57 @@
+{
+  "pages": ["pages/index/index",
+    "pages/order/order",
+    
+    "pages/trtcRoom/trtcRoom",
+    "pages/add/add",
+    "pages/orderDetail/orderDetail",
+    "pages/complaint/complaint",
+    "pages/evaluate/evaluate",
+    "pages/editOrder/editOrder",
+    "pages/worker/worker",
+    "pages/getOrderList/getOrderList",
+    "pages/orderRepeat/index",
+    "pages/message/message",
+    "pages/messageDetail/messageDetail",
+    "pages/mine/mine",
+    "pages/mineMsg/mineMsg",
+    "pages/asidePage/asidePage",
+    "pages/login/login"
+  ],
+  "tabBar": {
+    "color": "#95B3AC",
+    "selectedColor": "#35BB9A",
+    "borderStyle": "white",
+    "list": [{
+      "iconPath": "/image/index.png",
+      "selectedIconPath": "/image/index_act.png",
+      "pagePath": "pages/index/index",
+      "text": "主页"
+    }, {
+      "iconPath": "/image/add.png",
+      "selectedIconPath": "/image/add.png",
+      "pagePath": "pages/add/add",
+      "text": ""
+    }, {
+      "iconPath": "/image/mine.png",
+      "selectedIconPath": "/image/mine_act.png",
+      "pagePath": "pages/mine/mine",
+      "text": "我的"
+    }]
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序位置接口的效果展示"
+    }
+  },
+  "usingComponents": {
+    "callRoom": "./component/room/room"
+  },
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "邻时工",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

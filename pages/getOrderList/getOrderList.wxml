@@ -1,0 +1,52 @@
+<view class="meau flex bwn" catchtap="true">
+  <van-dropdown-menu active-color="#35BB9A" >
+    <van-dropdown-item value="{{ value1 }}" options="{{ option1 }}" title="{{title1}}" bind:open="openMeau"
+      bind:close="closeMeau" bind:change="onSwitch1Change" />
+    <van-dropdown-item value="{{ value2 }}" options="{{ option2 }}" title="{{title2}}" bind:open="openMeau"
+      bind:close="closeMeau" bind:change="onSwitch2Change" />
+  </van-dropdown-menu>
+  <view class="toggleChoose {{!isToggleC||list.length<=0?'noneC':''}}" catchtap="{{!isToggleC||list.length<=0?'':'toggle'}}">
+    <text hidden="{{choose}}">多选</text>
+    <text hidden="{{!choose}}">取消</text>
+  </view>
+</view>
+<view class="list" style="padding-bottom:{{choose?'240rpx':'env(safe-area-inset-bottom)'}}">
+  <navigator hover-class="none" url="/pages/worker/worker?biddingId={{item.id}}&type={{type}}&orderStatus={{orderStatus}}" class="flex item" wx:for="{{list}}" wx:key="index">
+    <view class="img flex" catchtap="chooseItem" data-index="{{index}}">
+      <view hidden="{{!choose}}">
+        <image src="/image/choose_s.png" hidden="{{item.checked}}"></image>
+        <image src="/image/choosed_s.png" hidden="{{!item.checked}}"></image>
+      </view>
+      <image src="/image/avatar.png" wx:if="{{!item.jzUser.photo}}"></image>
+      <image src="{{item.jzUser.phone}}" wx:else></image>
+    </view>
+    <view class="workermsg">
+      <view class="flex name">
+        {{item.jzUser.nickName||''}}
+        <image src="/image/show_01.png" style="margin-left:12rpx;" wx:if="{{item.jzUser.phone}}"></image>
+        <image src="/image/show_02.png" wx:if="{{item.jzUser.face}}"></image>
+        <image src="/image/show_03.png" wx:if="{{item.jzUser.cardFront}}"></image>
+        <image src="/image/show_04.png" wx:if="{{item.jzUser.bond}}"></image>
+      </view>
+      <view class="flex start">
+        <image src="/image/start.png"></image>{{item.jzUser.score||0}}
+      </view>
+      <view class="flex price bwn">
+        <view class="type">{{item.serviceType==1?'视频指导':(item.serviceType==2?'到店服务':'上门服务')}}</view>
+        <view class="flex" wx:if="{{type==2}}">
+          <view class="type">报价</view>
+          <view class="priceS">
+            <text>￥</text>
+            {{item.totalMoney}}
+          </view>
+        </view>
+      </view>
+    </view>
+  </navigator>
+</view>
+<view class="bottomFix flex around" hidden="{{!choose}}" style="padding-bottom:{{safeBottom}}">
+  <view catchtap="confirm" data-type="{{1}}">淘汰</view>
+  <view class="confirm" catchtap="confirm" data-type="{{2}}">选择</view>
+</view>
+<chooseModel title="提示" cont="{{contModel}}" showModel="{{showModel}}" bindcloseModel="closeModel" bindsave="save"></chooseModel>
+<callRoom id="roomMsg"></callRoom>

@@ -1,0 +1,143 @@
+page {
+  background: #fff;
+}
+.list {
+  background: #fff;
+  padding: 23rpx 23rpx 240rpx;
+}
+.list .item {
+  display: flex;
+  margin: 0 0 81rpx;
+}
+.list .item .avatar {
+  width: 67rpx;
+  height: 67rpx;
+  border-radius: 50%;
+  margin-right: 21rpx;
+}
+.list .item .msg {
+  flex: 1;
+  padding: 18rpx 0 0;
+}
+.list .item .msg .name > view:nth-child(1) {
+  font-size: 28rpx;
+  color: #415D56;
+}
+.list .item .msg .name .repeat {
+  width: 91rpx;
+  height: 39rpx;
+  background: #F5F5F5;
+  border-radius: 6rpx;
+  font-size: 24rpx;
+  color: #415D56;
+}
+.list .item .msg .name .repeat > image {
+  width: 20rpx;
+  height: 20rpx;
+  margin-left: 2rpx;
+}
+.list .item .msg .getMsg {
+  font-size: 30rpx;
+  color: #011F18;
+  margin: 32rpx 0 23rpx;
+}
+.list .item .msg .replyMsg {
+  width: 620rpx;
+  background: #F3FAF8;
+  border-radius: 20rpx;
+  padding: 21rpx 32rpx 25rpx;
+}
+.list .item .msg .replyMsg > view {
+  display: flex;
+}
+.list .item .msg .replyMsg .avatarR {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin: 11rpx 12rpx 0 0;
+}
+.list .item .msg .replyMsg .contR {
+  padding: 11rpx 0 0;
+  flex: 1;
+  columns: #333333;
+  font-size: 28rpx;
+}
+.list .item .msg .replyMsg .contR > text {
+  color: #35BB9A !important;
+}
+.list .item .msg .replyMsg > view:not(:last-child) {
+  margin-bottom: 30rpx;
+}
+.list .item .showAll {
+  width: 160rpx;
+  height: 60rpx;
+  background: #EBEDF2;
+  border-radius: 12rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  color: #333333;
+  padding: 0 0 0 9rpx;
+  margin: 22rpx 0 23rpx 0;
+}
+.list .item .showAll > image {
+  width: 30rpx;
+  height: 30rpx;
+  margin-right: 14rpx;
+}
+.bottomFix {
+  background: #F7F7F7 !important;
+  padding-top: 16rpx !important;
+}
+.bottomFix > .flex {
+  background: #F7F7F7;
+  padding: 0 18rpx;
+  align-items: flex-end !important;
+}
+.bottomFix > .flex .toggle {
+  margin-bottom: 8rpx;
+}
+.bottomFix > .flex .toggle > image {
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 21rpx;
+}
+.bottomFix > .flex .msgElse > button {
+  width: 638rpx;
+  height: 77rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #011F18;
+  line-height: 77rpx;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.bottomFix > .flex .msgElse button::after {
+  border: none;
+}
+.bottomFix > .flex .msgElse .hoverClass {
+  background: #f0f0f0 !important;
+}
+.bottomFix > .flex .msgElse > textarea {
+  width: 514rpx;
+  background: #FFFFFF;
+  border-radius: 4rpx;
+  padding: 20rpx 21rpx 0;
+  min-height: 77rpx !important;
+  box-sizing: border-box;
+}
+.bottomFix > .flex .send {
+  width: 113rpx;
+  height: 60rpx;
+  background: #07C160;
+  border-radius: 8rpx;
+  margin-left: 18rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #FFFFFF;
+  line-height: 60rpx;
+  text-align: center;
+  margin-bottom: 8rpx;
+}

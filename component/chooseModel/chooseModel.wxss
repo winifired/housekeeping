@@ -1,0 +1,36 @@
+.model {
+  width: 582rpx;
+  height: 372rpx;
+  background: #FFFFFF;
+  padding: 46rpx 0 0;
+}
+
+.model>.title {
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #000000;
+  text-align: center;
+}
+
+.model>.input {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #021F18;
+  margin: 58rpx 0 80rpx;
+}
+
+.btn>view {
+  border-top: 1px solid #F5F5F5;
+  width: 50%;
+  font-size: 30rpx;
+  color: #35BB9A;
+  height: 101rpx;
+  line-height: 101rpx;
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+}

@@ -1,0 +1,32 @@
+<view class="order">
+  <nav innerText="订单列表" hiddenBack="{{true}}" bindstatusHeight="statusHeight"></nav>
+  <view class="orderList">
+    <view class="nav flex around topBG" style="top:{{statusHeights}}rpx">
+      <view wx:for="{{nav}}" wx:key="index" class="{{activeNav==item.id?'active':''}}" catchtap="toggel"
+        data-index="{{item.id}}">
+        {{item.name}}
+        <view class="line"></view>
+      </view>
+    </view>
+    <view class="list">
+      <navigator class="item" wx:for="{{orderList}}" wx:key="index" hover-class="none" url="/pages/orderDetail/orderDetail?orderid={{item.id}}">
+        <view class="flex else">
+          <view class="name flex">标 <text>题</text> </view>
+          <view class="flex cont bwn">
+            <view class="hidden">{{item.title}}</view>
+            <view class="status">{{item.orderStatusT}}</view>
+          </view>
+        </view>
+        <view class="else">
+          <view class="name">所属分类</view>
+          <view class="flex cont">{{item.classifyName}}</view>
+        </view>
+        <view class="else">
+          <view class="name">详细地址</view>
+          <view class="flex cont">{{item.address}}{{item.detailAddress||''}}</view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<callRoom id="roomMsg"></callRoom>

@@ -1,0 +1,52 @@
+<view class="index">
+  <view class="swiper" wx:if="{{banner.length>0}}">
+    <swiper indicator-dots="{{false}}" autoplay="{{true}}" class="swiper_img">
+      <block wx:for="{{banner}}" wx:key="*this">
+        <swiper-item>
+          <navigator hover-class="none" url="{{!userId?'/pages/login/login':'/pages/asidePage/asidePage?type=1&detailId='+item.id}}">
+            <image src='{{item.imageUrl}}'></image>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+    <swiper indicator-dots="{{true}}" class="swiper_classify" indicator-color="#DDEAE6"
+      indicator-active-color="#35BB9A" wx:if="{{categoryList.length>0}}">
+      <block wx:for="{{categoryList}}" wx:key="*this">
+        <swiper-item>
+          <navigator hover-class="none" url="{{!userId?'/pages/login/login':'/pages/asidePage/asidePage?type=2&detailId='+val.id}}" class="classify_item" wx:for="{{item}}" wx:key="index" wx:for-item="val">
+            <image src='{{val.icon}}'></image>
+            <view class="hidden">{{val.categoryName}}</view>
+          </navigator>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="item_classify" wx:if="{{type1.length>0}}">
+    <view class="flex title">
+      <image src="/image/index_01.png"></image>
+      <text>快速上门 专业又高效</text>
+    </view>
+    <view class="list flex">
+      <navigator hover-class="none" url="{{!userId?'/pages/login/login':'/pages/asidePage/asidePage?type=3&detailId='+item.id}}" class="classify_item" wx:for="{{type1}}" wx:key="index">
+        <image src='{{item.icon}}'></image>
+        <view class="hidden">{{item.classifyName}}</view>
+      </navigator>
+    </view>
+  </view>
+  <view class="item_classify" wx:if="{{type2.length>0}}">
+    <view class="flex title">
+      <image src="/image/index_02.png"></image>
+      <text>质保期长  坏了重新修</text>
+    </view>
+    <view class="list flex">
+      <navigator hover-class="none" url="{{!userId?'/pages/login/login':'/pages/asidePage/asidePage?type=3&detailId='+item.id}}" class="classify_item" wx:for="{{type2}}" wx:key="index">
+        <image src='{{item.icon}}'></image>
+        <view class="hidden">{{item.classifyName}}</view>
+      </navigator>
+    </view>
+  </view>
+</view>
+<navigator hover-class="none" url="/pages/add/add" class="toSec" open-type="switchTab">
+  <image src="/image/fabu.png"></image>
+</navigator>
+<callRoom id="roomMsg" wx:if="{{userId}}"></callRoom>

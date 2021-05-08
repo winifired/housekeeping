@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "upload":"../../component/uploadImg/upLoad",
+    "code":"../../component/buttonCode/code",
+    "van-popup": "@vant/weapp/popup/index",
+    "chooseModel": "../../component/chooseModel/chooseModel",
+    "van-datetime-picker": "@vant/weapp/datetime-picker/index"
+  },
+  "navigationBarTitleText": "修改订单"
+}

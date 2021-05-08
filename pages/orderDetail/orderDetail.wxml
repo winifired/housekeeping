@@ -1,0 +1,208 @@
+<nav innerText="订单详情" hiddenBack="{{true}}"></nav>
+<view class="orderDetail">
+  <view class="status">{{orderInfo.orderStatusT}}</view>
+  <view class="status" wx:if="{{orderInfo.orderStatus==2}}">{{orderInfo.refuseReason}}</view>
+  <view class="msg" wx:if="{{orderInfo.title}}">
+    <view class="name">订单详情</view>
+    <view class="item" wx:if="{{orderInfo.title}}">
+      <view class="title">标题</view>
+      <view class="cont">{{orderInfo.title}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.demand||orderInfo.demandUrl.length>0}}">
+      <view class="title">需求说明</view>
+      <view class="cont">
+        <view wx:if="{{orderInfo.demand}}">{{orderInfo.demand}}</view>
+        <view class="flex images" wx:if="{{orderInfo.demandUrl.length>0}}">
+          <view wx:for="{{orderInfo.demandUrl}}" wx:key="index" bindtap="showImgVideo" data-index="{{index}}"
+            data-list="{{orderInfo.demandUrl}}">
+            <image src="{{item.content}}" wx:if="{{item.type=='图片'}}" mode="aspectFit"></image>
+            <video src="{{item.content}}" wx:else show-center-play-btn="{{false}}"></video>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.classifyName}}">
+      <view class="title">所属分类</view>
+      <view class="cont">{{orderInfo.classifyName}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.address}}">
+      <view class="title">地址</view>
+      <view class="cont">{{orderInfo.address}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.detailAddress}}">
+      <view class="title">详细地址</view>
+      <view class="cont">{{orderInfo.detailAddress}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.type}}">
+      <view class="title">订单形式</view>
+      <view class="cont">{{orderInfo.type==1?'定价':'竞价'}}发布</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.type==1&&orderInfo.price}}">
+      <view class="title">价格</view>
+      <view class="cont">￥{{orderInfo.price}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.userNum}}">
+      <view class="title">人数要求</view>
+      <view class="cont">{{orderInfo.userNum}}人</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.appointTime}}">
+      <view class="title">预约时间</view>
+      <view class="cont">{{orderInfo.appointTime}}</view>
+    </view>
+    <view class="item" wx:if="{{orderInfo.contacts||orderInfo.contactsPhone}}">
+      <view class="title">联系人</view>
+      <view class="cont">{{orderInfo.contacts}} {{orderInfo.contactsPhone}}</view>
+    </view>
+  </view>
+  <view class="msg" wx:if="{{biddingList.length>0}}">
+    <!-- 待付款 -->
+    <view class="name">工人详情</view>
+    <view class="list">
+      <navigator hover-class="none"
+        url="/pages/worker/worker?biddingId={{item.id}}&type={{orderInfo.type}}&orderStatus={{orderInfo.orderStatus}}&orderNo={{orderInfo.id}}&userAvater={{userInfo.photo}}"
+        class="flex item" wx:for="{{biddingList}}" wx:key="index">
+        <view class="img flex">
+          <image src="/image/avatar.png" wx:if="{{!item.jzUser.photo}}"></image>
+          <image src="{{item.jzUser.photo}}" wx:else></image>
+        </view>
+        <view class="workermsg">
+          <view class="flex name">
+            {{item.jzUser.nickName||''}}
+            <image src="/image/show_01.png" style="margin-left:12rpx;" wx:if="{{item.jzUser.phone}}"></image>
+            <image src="/image/show_02.png" wx:if="{{item.jzUser.face}}"></image>
+            <image src="/image/show_03.png" wx:if="{{item.jzUser.cardFront}}"></image>
+            <image src="/image/show_04.png" wx:if="{{item.jzUser.bond}}"></image>
+          </view>
+          <view class="flex start">
+            <image src="/image/start.png"></image>{{item.jzUser.score||0}}
+          </view>
+          <view class="flex price bwn">
+            <view class="type">{{item.serviceType==1?'视频指导':(item.serviceType==2?'到店服务':'上门服务')}}</view>
+            <view class="flex" wx:if="{{orderInfo.type==2}}">
+              <view class="type">报价</view>
+              <view class="priceS">
+                <text>￥</text>
+                {{item.totalMoney}}
+              </view>
+            </view>
+          </view>
+        </view>
+      </navigator>
+    </view>
+  </view>
+  <view class="msg" wx:if="{{orderInfo.score}}">
+    <!-- 已完成已评价 -->
+    <view class="name">我的评价</view>
+    <view class="evaList">
+      <view class="evaItem">
+        <view class="evaAvatar">
+          <image src="/image/avatar.png" wx:if="{{!userInfo.photo}}"></image>
+          <image src="{{userInfo.photo}}" wx:else></image>
+        </view>
+        <view class="evaMsg">
+          <view class="flex name">
+            {{userInfo.nickName||''}}
+            <van-rate value="{{ orderInfo.score||0 }}" color="#35BB9A" void-color="#CDD7D5" size="{{12}}" gutter="{{1}}"
+              void-icon="star" readonly />
+          </view>
+          <view class="evaCont">{{orderInfo.evaluate}}</view>
+          <view class="flex evaImg" wx:if="{{orderInfo.evaluateUrlList.length>0}}">
+            <view wx:for="{{orderInfo.evaluateUrlList}}" wx:key="index" bindtap="showImgVideo" data-index="{{index}}"
+              data-list="{{orderInfo.evaluateUrlList}}">
+              <image src="{{item.content}}" wx:if="{{item.type=='图片'}}" mode="aspectFit"></image>
+              <video src="{{item.content}}" wx:else show-center-play-btn="{{false}}"></video>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="msg" wx:if="{{orderInfo.complaintUser}}">
+    <view class="name">我的投诉</view>
+    <view class="complaint">
+      <view class="complaintItem">
+        <view>投诉工人</view>
+        <view>{{orderInfo.complaintUserName}}</view>
+      </view>
+      <view class="complaintItem">
+        <view>投诉理由</view>
+        <view>{{orderInfo.complaintReason||''}}</view>
+      </view>
+      <view class="complaintItem">
+        <view>投诉目的</view>
+        <view>{{orderInfo.complaintPurpose||''}}</view>
+      </view>
+      <view class="complaintItem">
+        <view>金额</view>
+        <view>￥{{orderInfo.complaintMoney||0}}</view>
+      </view>
+      <view class="complaintItem">
+        <view>投诉信息</view>
+        <view>{{orderInfo.complaintInfo||''}}</view>
+      </view>
+      <view class="flex evaImg" wx:if="{{orderInfo.complaintUrlList.length>0}}">
+        <view wx:for="{{orderInfo.complaintUrlList}}" wx:key="index" bindtap="showImgVideo" data-index="{{index}}"
+          data-list="{{orderInfo.complaintUrlList}}">
+          <image src="{{item.content}}" wx:if="{{item.type=='图片'}}" mode="aspectFit"></image>
+          <video src="{{item.content}}" wx:else show-center-play-btn="{{false}}"></video>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="msg" wx:if="{{appealBidding.length>0}}">
+    <view class="name">工人申诉</view>
+    <view class="complaint" wx:for="{{appealBidding}}" wx:key="index">
+      <view class="complaintItem">
+        <view>申诉理由</view>
+        <view>{{item.appealReason||''}}</view>
+      </view>
+      <view class="evaImg flex" wx:if="{{item.appealUrl.length>0}}">
+        <view wx:for="{{item.appealUrl}}" wx:key="secindex" wx:for-item="val" bindtap="showImgVideo"
+          data-index="{{secindex}}" data-list="{{item.appealUrl}}">
+          <image src="{{val.content}}" wx:if="{{val.type=='图片'}}" mode="aspectFit"></image>
+          <video src="{{val.content}}" wx:else show-center-play-btn="{{false}}"></video>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view style="padding-bottom:{{safeBottom}}" class="bottomFix flex"
+  wx:if="{{orderInfo.orderStatus!=0&&orderInfo.orderStatus!=2}}">
+  <!-- 待接单 -->
+  <navigator wx:if="{{orderInfo.orderStatus==1}}" url="/pages/editOrder/editOrder?orderid={{orderid}}"
+    hover-class="none">修改订单</navigator>
+  <navigator wx:if="{{orderInfo.orderStatus==1}}" url="/pages/orderRepeat/index?orderid={{orderid}}" hover-class="none">
+    追问信息</navigator>
+  <navigator wx:if="{{orderInfo.orderStatus==1}}"
+    url="/pages/getOrderList/getOrderList?orderid={{orderid}}&type={{orderInfo.type}}&orderStatus={{orderInfo.orderStatus}}&userNum={{orderInfo.userNum}}"
+    hover-class="none" class="elseBtn">接单列表</navigator>
+  <!-- 待付款 -->
+  <view catchtap="removeOrder" data-type="{{1}}" wx:if="{{orderInfo.orderStatus==3||orderInfo.orderStatus==4}}">取消订单
+  </view>
+  <view class="elseBtn" wx:if="{{orderInfo.orderStatus==3}}" catchtap="toPay">支付金额</view>
+  <view class="elseBtn" catchtap="removeOrder" data-type="{{2}}" wx:if="{{orderInfo.orderStatus==4}}">完成订单</view>
+  <!-- 已完成 -->
+  <view catchtap="goEva" wx:if="{{orderInfo.orderStatus==5}}">评价</view>
+  <view class="elseBtn" catchtap="complaint" wx:if="{{orderInfo.orderStatus==5}}">投诉</view>
+  <!-- 退款售后 -->
+  <view catchtap="removeOrder" class="elseBtn" data-type="{{3}}" wx:if="{{orderInfo.orderStatus==6}}">撤销投诉</view>
+</view>
+<chooseModel title="提示" cont="{{contModel}}" showModel="{{showModel}}" bindcloseModel="closeModel" bindsave="save">
+</chooseModel>
+<imgs show="{{show}}" currentSwiper="{{currentSwiper}}" showList="{{showList}}" bindhideImg="hideImg"></imgs>
+<van-popup show="{{ showPay }}" bind:close="onClosepay" position="bottom" round closeable catchtouchmove="true">
+  <view class="model">
+    <view class="title">确认支付</view>
+    <view class="price">
+      ￥ <text>{{totalP}}</text>
+    </view>
+    <view class="flex bwn">
+      <view class="flex">
+        <image src="/image/wxPay.png"></image>微信支付
+      </view>
+      <image src="/image/choosed.png"></image>
+    </view>
+    <view class="save pay" catchtap="confirmPay">立即支付</view>
+  </view>
+</van-popup>
+<callRoom id="roomMsg"></callRoom>
