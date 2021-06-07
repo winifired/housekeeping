@@ -18,7 +18,7 @@
         <image src="/image/choosed_s.png" hidden="{{!item.checked}}"></image>
       </view>
       <image src="/image/avatar.png" wx:if="{{!item.jzUser.photo}}"></image>
-      <image src="{{item.jzUser.phone}}" wx:else></image>
+      <image src="{{item.jzUser.photo}}" wx:else></image>
     </view>
     <view class="workermsg">
       <view class="flex name">

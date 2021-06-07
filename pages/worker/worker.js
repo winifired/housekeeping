@@ -166,14 +166,14 @@ Page({
   },
   enterRoom: function () {
     let that = this;
-    if (!this.data.userSig) {
-      wx.showToast({
-        title: '正在获取通话信息，请稍后重试',
-        icon: 'none',
-        duration: 2000,
-      })
-      return;
-    }
+    // if (!this.data.userSig) {
+    //   wx.showToast({
+    //     title: '正在获取通话信息，请稍后重试',
+    //     icon: 'none',
+    //     duration: 2000,
+    //   })
+    //   return;
+    // }
     const child = this.selectComponent('#roomMsg');
     console.log(child)
     // const url = `/pages/trtcRoom/trtcRoom?workerId=${this.data.workerInfo.userId}&userID=${wx.getStorageSync('userId')}&userSig=${this.data.userSig}&workerName=${this.data.workerInfo.jzUser.nickName||''}&workerAvater=${this.data.workerInfo.jzUser.photo||''}&userAvater=${this.data.userAvater}`

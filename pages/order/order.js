@@ -27,7 +27,9 @@ Page({
     }],
     activeNav: 9,
     statusHeights: 0,
-    orderList: []
+    orderList: [],
+    pageNum: 1,
+    total: 0
   },
 
   /**
@@ -41,16 +43,23 @@ Page({
     this.post();
   },
   post() {
+    if (this.data.pageNum == 1) {
+      this.setData({
+        orderList: []
+      })
+    }
     let that = this;
     request.post(Api.userOrderList, {
       data: {
         orderStatus: this.data.activeNav == 9 ? '' : this.data.activeNav,
-        userId: that.data.userId
+        userId: that.data.userId,
+        pageNum: this.data.pageNum,
+        pageSize: 10
       }
     }).then(res => {
       // console.log(res)
       if (res.code == 0) {
-        res.data.map(item => {
+        res.data.rows.map(item => {
           if (item.orderStatus == 0) {
             item.orderStatusT = '待审核';
           } else if (item.orderStatus == 1) {
@@ -69,8 +78,10 @@ Page({
             item.orderStatusT = '已取消';
           }
         })
+        that.data.orderList.push(...res.data.rows);
         that.setData({
-          orderList: res.data
+          orderList: that.data.orderList,
+          total: res.data.total
         })
       }
     })
@@ -82,7 +93,8 @@ Page({
   },
   toggel(e) {
     this.setData({
-      activeNav: e.currentTarget.dataset.index
+      activeNav: e.currentTarget.dataset.index,
+      pageNum:1,
     });
     this.post();
   },
@@ -130,7 +142,15 @@ Page({
    * 页面上拉触底事件的处理函数
    */
   onReachBottom: function () {
-
+    if (this.data.orderList.length < this.data.total) {
+      this.data.pageNum++;
+      this.setData({
+        pageNum: this.data.pageNum
+      })
+      this.post();
+    } else {
+      return
+    }
   },
 
   /**

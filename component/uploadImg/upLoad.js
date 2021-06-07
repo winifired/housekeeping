@@ -54,16 +54,18 @@ Component({
 				mediaType: ['image', 'video'],
 				sourceType: ['album', 'camera'],
 				success: (chooseImageRes) => {
+					console.log(chooseImageRes)
 					const tempFilePaths = [];
 					chooseImageRes.tempFiles.map(item => {
 						tempFilePaths.push({
-							type: item.fileType == "video" ? '视频' : '图片',
+							type: chooseImageRes.type == "video" ? '视频' : (chooseImageRes.type == "image" ?'图片':''),
 							content: item.tempFilePath
 						});
 					});
 					wx.showLoading({
 						mask:true
 					});
+					console.log(tempFilePaths)
 					let newOld=tempFilePaths.length+that.data.imagesUrl.length;
 					tempFilePaths.map(item => {
 						wx.uploadFile({
@@ -79,8 +81,6 @@ Component({
 									imagesUrl: that.data.imagesUrl,
 								})
 								wx.hideLoading();
-								console.log(newOld)
-								console.log(that.data.imagesUrl.length)
 								if (newOld == that.data.imagesUrl.length) {
 									that.triggerEvent('getImg', that.data.imagesUrl);
 								}

@@ -1,9 +1,10 @@
 App({
   onLaunch() {
     const syStem=wx.getSystemInfoSync();
+    let pxToRpxScale = 750 / syStem.windowWidth;
     let safeBottom=0;
     if((syStem.screenHeight-syStem.safeArea.bottom)>0){
-      safeBottom=parseInt(Number(syStem.screenHeight-syStem.safeArea.bottom)*2);
+      safeBottom=parseInt(Number(syStem.screenHeight-syStem.safeArea.bottom)*pxToRpxScale);
     }
     wx.setStorageSync('safeBottom', safeBottom);
     wx.$globalData = {

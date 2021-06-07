@@ -165,6 +165,12 @@
       </view>
     </view>
   </view>
+  <view class="msg" wx:if="{{orderInfo.handleResult}}">
+    <view class="name">处理结果</view>
+    <view class="complaint">
+      <rich-text nodes="{{orderInfo.handleResult}}"></rich-text>
+    </view>
+  </view>
 </view>
 <view style="padding-bottom:{{safeBottom}}" class="bottomFix flex"
   wx:if="{{orderInfo.orderStatus!=0&&orderInfo.orderStatus!=2}}">

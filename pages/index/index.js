@@ -1,5 +1,6 @@
 import Api from "../../utils/api.js"
 import request from "../../utils/request.js"
+import changeTime from "../../utils/changeTime.js"
 Page({
   data: {
     banner: [],
@@ -9,6 +10,7 @@ Page({
     userId:''
   },
   onLoad() {
+    console.log(changeTime)
     this.setData({
       userId:wx.getStorageSync('userId')
     })

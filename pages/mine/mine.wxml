@@ -61,7 +61,7 @@
     <view class="flex title bwn">
       <view>其他工具</view>
     </view>
-    <view class="flex order_item around">
+    <view class="flex order_item elseItem">
       <view bindtap="openChat">
         <image src="/image/mine_08.png"></image>
         <view>在线客服</view>
@@ -70,10 +70,10 @@
         <image src="/image/mine_09.png"></image>
         <view>客服电话</view>
       </view>
-      <view bindtap="outLogin">
+      <!-- <view bindtap="outLogin">
         <image src="/image/mine_10.png"></image>
         <view>退出登录</view>
-      </view>
+      </view> -->
     </view>
   </view>
 </view>

@@ -135,7 +135,7 @@ Page({
       }
     })
   },
-  hideImg(e){
+  hideImg(e) {
     this.setData({
       show: false,
     })
@@ -156,7 +156,7 @@ Page({
       return;
     }
     wx.navigateTo({
-      url: '/pages/evaluate/evaluate?orderid=' + this.data.orderid + '&orderTitle=' + this.data.orderInfo.title + '&classifyName=' + this.data.orderInfo.classifyName + '&address=' + this.data.orderInfo.address+ '&detailAddress=' + this.data.orderInfo.detailAddress + '&orderStatusT=' + this.data.orderInfo.orderStatusT,
+      url: '/pages/evaluate/evaluate?orderid=' + this.data.orderid + '&orderTitle=' + this.data.orderInfo.title + '&classifyName=' + this.data.orderInfo.classifyName + '&address=' + this.data.orderInfo.address + '&detailAddress=' + this.data.orderInfo.detailAddress + '&orderStatusT=' + this.data.orderInfo.orderStatusT,
     })
   },
   complaint() {
@@ -197,7 +197,7 @@ Page({
           totalP += (item.totalMoney - 0)
         }
       })
-      totalP=totalP.toFixed(2)
+      totalP = totalP.toFixed(2)
       //竞价
     }
     this.setData({
@@ -211,6 +211,8 @@ Page({
     //支付
     let that = this,
       arr = [];
+    let pages = getCurrentPages();
+    let prevPage = pages[pages.length - 2];
     this.data.biddingList.map(item => {
       arr.push(item.id)
     })
@@ -240,10 +242,13 @@ Page({
               icon: 'none'
             })
             if (prevPage.route == 'pages/order/order') {
+              prevPage.setData({
+                activeNav: 4
+              })
               prevPage.post();
             }
             setTimeout(() => {
-              that.post();
+              wx.navigateBack();
             }, 1500)
           },
           fail() {

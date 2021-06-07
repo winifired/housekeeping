@@ -88,6 +88,9 @@
   height: 16rpx;
   margin-left: 16rpx;
 }
+.mine_order .elseItem > view {
+  width: 33.33%;
+}
 .mine_order .order_item image {
   width: 50rpx;
   height: 50rpx;

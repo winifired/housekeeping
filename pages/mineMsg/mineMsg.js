@@ -81,13 +81,13 @@ Page({
       show: false
     })
   },
-  edit() {
+  edit(data) {
     let that = this;
     request.post(Api.updateUserInfo, {
       data: {
         id: this.data.userInfo.id,
-        photo: this.data.userPhoto,
-        nickName: this.data.userName,
+        photo: this.data.userPhoto||'',
+        nickName: this.data.userName||'',
       }
     }).then(res => {
       if (res.code == 0) {

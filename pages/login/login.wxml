@@ -1,21 +1,21 @@
 
 <view class="login">
   <image src="/image/logo.png" class="logo"></image>
-  <view class="msg">
+  <!-- <view class="msg">
     <view class="item flex">
       <view>+86</view>
-      <input type="number" class="phone" model:value="{{phone}}" />
+      <input type="number" class="phone" model:value="{{phone}}" placeholder="输入手机号" placeholder-class="inputPl" />
     </view>
     <view class="item flex">
-      <input type="number" model:value="{{codeVal}}" />
+      <input type="number" model:value="{{codeVal}}" placeholder="输入验证码" placeholder-class="inputPl" />
       <code bindgetCode="getCode" phone="{{phone}}"></code>
     </view>
   </view>
-  <view class="save" bindtap="save">登录</view>
+  <view class="save" bindtap="save">登录</view> -->
+  <button class="winxin" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"><image src="/image/winxin.png"></image></button>
   <view class="tip flex center">登录即表示同意
     <view bindtap="showAgree">《用户协议》</view>
   </view>
-  <button class="winxin" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber"><image src="/image/winxin.png"></image></button>
   
 </view>
 <van-popup show="{{ show }}" bind:close="onClose" custom-style="{{customStyle}}">

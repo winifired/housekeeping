@@ -61,7 +61,9 @@ Page({
     this.getDate();
     this.postType();
   },
+  clickTop(){return},
   getImg(e) {
+    console.log(e.detail)
     this.setData({
       demandUrl: e.detail
     })
@@ -221,6 +223,7 @@ Page({
       });
       return;
     }
+    console.log(data)
     request.post(Api.addOrder, {
       data: data
     }).then(res => {

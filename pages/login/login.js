@@ -157,11 +157,13 @@ Page({
     })
   },
   getphonenumber(e) {
-    this.setData({
-      encryptedData: e.detail.encryptedData,
-      iv: e.detail.iv,
-      getUser: true
-    })
+    if (e.detail.encryptedData) {
+      this.setData({
+        encryptedData: e.detail.encryptedData,
+        iv: e.detail.iv,
+        getUser: true
+      })
+    }
   },
   refuseUser() {
     let that = this;

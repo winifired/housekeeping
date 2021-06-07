@@ -1,5 +1,5 @@
-const host = "http://192.168.62.171:8080";
-// const host = "https://www.linkworker.cn/JZ";
+// const host = "http://192.168.62.171:8080";
+const host = "https://www.linkworker.cn/JZ";
 const api = {
 	carouselList:host+'/api/param/carouselList',//轮播图
 	carouselInfo:host+'/api/param/carouselInfo',//轮播图详情

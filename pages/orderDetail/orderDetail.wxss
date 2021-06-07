@@ -1,4 +1,7 @@
 @import "../getOrderList/getOrderList.wxss";
+.model{
+  padding-bottom:20rpx;
+}
 .model .title {
   font-size: 38rpx;
   font-weight: 400;

@@ -39,8 +39,8 @@ Component({
     loaclPhoneNumber: wx.getStorageSync('userId'),
     config: {
       sdkAppID: wx.$globalData.sdkAppID,
-      userID: wx.getStorageSync('userId') ? String(wx.getStorageSync('userId')) : '',
-      userSig: wx.getStorageSync('userSig'),
+      userID: '',
+      userSig: '',
       type: 2,
     },
     getInvitation: {}
@@ -50,6 +50,10 @@ Component({
       setTimeout(() => {
         console.log(wx.getStorageSync('userSig'))
         console.log(wx.getStorageSync('userId'))
+        this.setData({
+          'config.userID':wx.getStorageSync('userId') ? String(wx.getStorageSync('userId')) : '',
+          'config.userSig':wx.getStorageSync('userSig'),
+        })
         this.TRTCCalling = this.selectComponent('#TRTCCalling-component')
         this.bindTRTCCallingRoomEvent();
         this.TRTCCalling.login();

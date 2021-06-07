@@ -1,5 +1,5 @@
 <view class="add">
-  <form catchsubmit="formSubmit">
+  <form catchsubmit="formSubmit" catchtap="clickTop">
     <view class="bg">
       <view class="item">
         <view class="name">标题</view>
